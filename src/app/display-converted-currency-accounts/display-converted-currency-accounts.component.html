@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <title>Display currency accounts with converted Rand values</title>
+    <head></head>
+    <br><br>
+    <div class ="row justify-content-center align-items-center">
+        <body>
+            <p>Display currency accounts with converted Rand values</p>
+            <div [hidden]="submitted" style="width: 600px;" class="form-group">
+                <form novalidate>
+                    <div class="col">
+                        <input type="number" class="form-control" id="clientId" name="clientId" 
+                                            placeholder="enter client id ..."  [(ngModel)]="clientAccount.clientId" name="clientId" #clientId="ngModel" required>
+                                            <div *ngIf="clientId.invalid && (clientId.dirty || clientId.touched)" class="alert alert-danger">
+                                                    <div *ngIf="clientId.errors.required" >
+                                                        Please enter a valid client id 
+                                                    </div>
+                                            </div>  
+                                                     
+                    </div>
+                </form>
+           </div>
+           <table class="table text-sm-left">
+                <thead>
+                    <tr>
+                        <th >Account Number</th>
+                        <th >Account Type</th>
+                        <th > SA RANDS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let clientAccount of message">                 
+                      <td>{{clientAccount.clientAccountNumber}}</td>                                  
+                      <td>{{clientAccount.accountTypeCode}}</td>
+                      <td>{{clientAccount.saRands}}</td>
+                    </tr>
+                   
+            </table>
+            
+            <div class="overlay-right d-flex justify-content-center">
+                
+                <button class="btn btn-outline-success form-group col-md-4S justify-content-center align-items-center" style="text-align: center; width: 100px ;"[disabled]="clientId.invalid && (clientId.dirty || clientId.touched)" (click)="getClientById()">Enter</button>
+                <form class='inline-form'>
+                  <button class="btn btn-outline-primary form-group col-md-4S justify-content-center align-items-center" style="text-align: center; width: 100px"  [disabled]="clientId.invalid && (clientId.dirty || clientId.touched)" (click)="goToSelectatm()">Next</button>
+                </form>
+            
+        </div>
+        </body>
+    </div>
+  
+</html>

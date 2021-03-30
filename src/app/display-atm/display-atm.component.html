@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <title>Discovery Client Transactiona Accounts</title>
+    <head></head>
+    <br><br>
+    <div class ="row justify-content-center align-items-center">
+       
+        <body>
+            <p>Choose Atm to use by Id</p>
+            <div [hidden]="submitted" style="width: 600px;" class="form-group">
+                <form novalidate>
+                    <div class="col">
+                        <input type="number" class="form-control" id="atmId" name="atmId" 
+                                            placeholder="enter atmId id ..."  [(ngModel)]="atm.atmId" name="atmId" #atmId="ngModel" required>
+                                            <div *ngIf="atmId.invalid && (atmId.dirty || atmId.touched)" class="alert alert-danger">
+                                                    <div *ngIf="atmId.errors.required" >
+                                                        Please enter a valid Atm id 
+                                                    </div>
+                                            </div>  
+                                                     
+                    </div>
+                </form>
+            </div>
+       
+            <div class="overlay-right d-flex justify-content-center">
+                    
+                <button class="btn btn-outline-success form-group col-md-4S justify-content-center align-items-center" style="text-align: center; width: 100px ;"[disabled]="atmId.invalid && (atmId.dirty || atmId.touched)" (click)="chooseAtmForWithdrawal()">Enter</button>
+                <form class='inline-form'>
+                  <button class="btn btn-outline-primary form-group col-md-4S justify-content-center align-items-center" style="text-align: center; width: 100px"  [disabled]="atmId.invalid && (atmId.dirty || atmId.touched)" (click)="goToSelectAccountTypeByClientId()">Next</button>
+                </form>
+            
+           </div>
+      
+        </body>
+    </div>
+    
+</html>
+
